@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <title>Chopsticks</title>
+  </head>
+  <body>
+    <h1>Chopsticks</h1>
+    <div id="landing-page">
+      <div class="container">
+        <div class="skintone">
+          <h3>SELECT YOUR SKIN TONE:</h3>
+          <div id="skin-options">
+            <div class="circle" id="default">
+              <div class="content">Default</div>
+            </div>
+            <div class="circle" id="light">
+              <div class="content">Light</div>
+            </div>
+            <div class="circle" id="tan">
+              <div class="content">Tan</div>
+            </div>
+            <div class="circle" id="dark">
+              <div class="content">Dark</div>
+            </div>
+          </div>
+        </div>
+        <div class="difficulty">
+          <h3>SELECT DIFFICULTY:</h3>
+          <div id="difficulty-options">
+            <div class="rectangle" id="halfwit">
+              <div class="content2">Half-wit</div>
+            </div>
+            <div class="rectangle" id="genius">
+              <div class="content2">Genius</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="buttons">
+        <div class="button-block">
+          <button id="start-button">Start</button>
+        </div>
+        <div class="button-block">
+          <button id="rules-button">Rules</button>
+        </div>
+      </div>
+      <div id="rules-window" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <div class="modal-text">
+            <p>
+              <b>Chopsticks</b> is a hand game in which players extend a number of fingers from each hand and transfer those scores by taking turns with the computer to tap one hand against another.
+            </p>
+            <p>
+              Both the player and computer starts with 1 finger on each hand. On a player’s turn, they must either <b>attack</b>, by adding finger(s) from one of their hands to another, or <b>split</b>, by dividing the number of fingers between their two hands.
+            </p>
+            <p>
+              When a hand ends up with more than 4 fingers, then the hand is dead and can no longer be of use to the player or computer. The game ends when either the player or the computer has two dead hands.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="game-page">
+      <div class="board">
+        <div id="computer">
+          <div class="hand computer" id="computer-left">1</div>
+          <div class="hand computer" id="computer-right">1</div>
+        </div>
+        <div id="player">
+          <div class="hand player" id="player-left">1</div>
+          <div class="hand player" id="player-right">1</div>
+        </div>
+      </div>
+      <div class="result"></div>
+      <div class="container2">
+        <div class="move">
+          <h3>IT'S YOUR TURN. SELECT MOVE:</h3>
+          <div id="move-options">
+            <div class="rectangle" id="attack">
+              <div class="content2">Attack</div>
+            </div>
+            <div class="rectangle" id="split">
+              <div class="content2">Split</div>
+            </div>
+          </div>
+        </div>
+        <div class="move-attack-1">
+          <h3>SELECT HAND TO ATTACK FROM:</h3>
+          <div id="move-options">
+            <div class="rectangle" id="p-left-hand">
+              <div class="content2">Left Hand</div>
+            </div>
+            <div class="rectangle" id="p-right-hand">
+              <div class="content2">Right Hand</div>
+            </div>
+          </div>
+        </div>
+        <div class="move-attack-2-left">
+          <h3>SELECT HAND TO ATTACK:</h3>
+          <div id="move-options">
+            <div class="rectangle" id="com-left-hand">
+              <div class="content2">Com-L</div>
+            </div>
+            <div class="rectangle" id="com-right-hand">
+              <div class="content2">Com-R</div>
+            </div>
+            <div class="rectangle" id="p-other-right">
+              <div class="content2">Right Hand</div>
+            </div>
+          </div>
+        </div>
+        <div class="move-attack-2-right">
+          <h3>SELECT HAND TO ATTACK:</h3>
+          <div id="move-options">
+            <div class="rectangle" id="com-left-hand-2">
+              <div class="content2">Com-L</div>
+            </div>
+            <div class="rectangle" id="com-right-hand-2">
+              <div class="content2">Com-R</div>
+            </div>
+            <div class="rectangle" id="p-other-left">
+              <div class="content2">Left Hand</div>
+            </div>
+          </div>
+        </div>
+        <div class="computers-turn">
+          <h3>COMPUTER'S TURN:</h3>
+          <div id="move-options">
+            <div class="rectangle" id="computers-move">
+              <div class="content2" id="computer-text">Computer making a move...</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="move-log"></div>
+      <div class="buttons">
+        <button id="return-button">Return</button>
+      </div>
+    </div>
+
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
