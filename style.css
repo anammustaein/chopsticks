@@ -20,6 +20,12 @@ h3 {
   text-align: center;
 }
 
+h4 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  color: black;
+}
+
 #skin-options {
   margin: 0 auto;
   display: flex;
@@ -38,20 +44,36 @@ h3 {
   float: left;
 }
 
-#default {
+#gold {
   background-color: gold;
 }
 
-#light {
+#navajowhite {
   background-color: navajowhite;
 }
 
-#tan {
+#peru {
   background-color: peru;
 }
 
-#dark {
+#sienna {
   background-color: sienna;
+}
+
+#gold:hover {
+  background-color: dodgerblue;
+}
+
+#navajowhite:hover {
+  background-color: dodgerblue;
+}
+
+#peru:hover {
+  background-color: dodgerblue;
+}
+
+#sienna:hover {
+  background-color: dodgerblue;
 }
 
 .content {
@@ -69,7 +91,7 @@ h3 {
   justify-content: center;
 }
 
-.rectangle {
+.rectangle, .rectangle2 {
   height: 30px;
   width: 80px;
   background-color: whitesmoke;
@@ -81,7 +103,74 @@ h3 {
   float: left;
 }
 
+.rectangle-gray {
+  height: 30px;
+  width: 80px;
+  background-color: darkgray;
+  border: grey;
+  border-radius: 10px;
+  border-width: 3px;
+  border-style: solid;
+  margin: 10px;
+  float: left;
+  cursor: not-allowed;
+}
+
+.oval {
+  height: 30px;
+  width: 40px;
+  background-color: whitesmoke;
+  border: grey;
+  border-radius: 20px;
+  border-width: 3px;
+  border-style: solid;
+  margin: 10px;
+  float: left;
+}
+
+.rectangle:hover {
+  background-color: dodgerblue;
+}
+
+.crimson:hover {
+  background-color: crimson;
+}
+
+.oval:hover {
+  background-color: dodgerblue;
+}
+
+#confirm-split:hover {
+  background-color: yellowgreen;
+}
+
 .content2 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  color: black;
+  display: flex;
+  justify-content: center;
+  line-height: 30px;
+}
+
+.content2:hover {
+  color: whitesmoke;
+}
+
+.content4 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  color: grey;
+  display: flex;
+  justify-content: center;
+  line-height: 30px;
+}
+
+#confirm:hover {
+  color: black;
+}
+
+.content3 {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 14px;
   color: black;
@@ -183,6 +272,26 @@ p {
   line-height: 150px;
 }
 
+.result {
+  height: 302px;
+  width: 302px;
+  margin: auto;
+  background: yellowgreen;
+  border: 1px solid black;
+}
+
+#you-win {
+  line-height: 260px;
+}
+
+#lose {
+  background: tomato;
+}
+
+#you-lose {
+  line-height: 260px;
+}
+
 .player {
   background-color: peru;
 }
@@ -206,8 +315,16 @@ p {
   background-color: lightcoral;
 }
 
+#attack:hover {
+  background-color: dodgerblue;
+}
+
 #split {
   background-color: lightgreen;
+}
+
+#split:hover {
+  background-color: dodgerblue;
 }
 
 #computers-move {
@@ -220,21 +337,3 @@ p {
   transform: translate(-50%, 0);
 }
 
-
-
-
-
-
-
-/* @media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-} */
