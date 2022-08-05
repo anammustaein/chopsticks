@@ -76,6 +76,7 @@ $(() => {
     $("#player-right-hand").hide();
     $(".win-state").hide();
     $(".lose-state").hide();
+    
 
     // initialize number of hands and fingers
     let computerLeftFingers = 1;
@@ -177,28 +178,22 @@ $(() => {
     const checkSplit = () => {
       let totalFingers = playerLeftFingers + playerRightFingers;
       if (
-        playerLeftFingers != playerRightFingers &&
-        totalFingers != 1 &&
-        totalFingers != 7
+        playerLeftFingers === playerRightFingers ||
+        totalFingers === 1 ||
+        totalFingers === 7
       ) {
-        $("#split").show();
-        $("#cant-split").hide();
-        $("#split").on("click", split);
-      } else if (totalFingers === 3) {
-        if (playerLeftFingers === 1 && playerRightFingers === 2) {
-          $("#cant-split").show();
-          $("#split").hide();
-        } else if (playerLeftFingers === 2 && playerRightFingers === 1) {
-          $("#cant-split").show();
-          $("#split").hide();
-        } else {
-          $("#split").show();
-          $("#cant-split").hide();
-          $("#split").on("click", split);
-        }
-      } else {
-        $("#cant-split").show();
         $("#split").hide();
+        $("#cant-split").show();
+      } else if (playerLeftFingers === 1 && playerRightFingers === 2) {
+        $("#split").hide();
+        $("#cant-split").show();
+      } else if (playerLeftFingers === 2 && playerRightFingers === 1) {
+        $("#split").hide();
+        $("#cant-split").show();
+      } else {
+        $("#cant-split").hide();
+        $("#split").show();
+        $("#split").on("click", split);
       }
     };
 
@@ -216,6 +211,8 @@ $(() => {
       $(".move-split").show();
       // This is to make sure that dead hands are resurrected when splitting
       if (playerLeftFingers === 0) {
+        leftInitialState = 0;
+        rightInitialState = playerRightFingers;
         // Splitting value of 2 is a special case because there's only one result
         if (playerRightFingers === 2) {
           playerHands = 2;
@@ -233,6 +230,8 @@ $(() => {
           $("#player-right").text(playerRightFingers);
         }
       } else if (playerRightFingers === 0) {
+        leftInitialState = playerLeftFingers;
+        rightInitialState = 0;
         if (playerLeftFingers === 2) {
           playerHands = 2;
           playerLeftFingers = 1;
@@ -445,63 +444,6 @@ $(() => {
       }
     };
 
-    // // Right-hand function
-    // const rightHand = () => {
-    //   console.log("Right hand is selected");
-    //   $(".move-attack-1").hide();
-    //   $(".move-attack-2-right").show();
-    //   $("#player-right").css("border-color", "dodgerblue");
-    //   playerPlayingHand = playerRightFingers;
-    //   // Conditions to ensure dead hands are not selectable
-    //   if (computerRightFingers === 0) {
-    //     $("#com-right-hand-2").hide();
-    //     $("#com-right-gray-2").show();
-    //     if (playerLeftFingers === 0) {
-    //       $("#p-other-left").hide();
-    //       $("#p-other-left-gray").show();
-    //     } else {
-    //       $("#p-other-left").show();
-    //       $("#p-other-left-gray").hide();
-    //     }
-    //   } else if (computerLeftFingers === 0) {
-    //     $("#com-left-hand-2").hide();
-    //     $("#com-left-gray-2").show();
-    //     if (playerLeftFingers === 0) {
-    //       $("#p-other-left").hide();
-    //       $("#p-other-left-gray").show();
-    //     } else {
-    //       $("#p-other-left").show();
-    //       $("#p-other-left-gray").hide();
-    //     }
-    //   } else if (playerLeftFingers === 0) {
-    //     $("#p-other-left").hide();
-    //     $("#p-other-left-gray").show();
-    //     if (computerRightFingers === 0 && computerLeftFingers != 0) {
-    //       $("#com-right-hand-2").hide();
-    //       $("#com-right-gray-2").show();
-    //       $("#com-left-hand-2").show();
-    //       $("#com-left-gray-2").hide();
-    //     } else if (computerRightFingers != 0 && computerLeftFingers === 0) {
-    //       $("#com-right-hand-2").show();
-    //       $("#com-right-gray-2").hide();
-    //       $("#com-left-hand-2").hide();
-    //       $("#com-left-gray-2").show();
-    //     } else {
-    //       $("#com-right-hand-2").show();
-    //       $("#com-right-gray-2").hide();
-    //       $("#com-left-hand-2").show();
-    //       $("#com-left-gray-2").hide();
-    //     }
-    //   } else {
-    //     $("#com-right-hand-2").show();
-    //     $("#com-right-gray-2").hide();
-    //     $("#com-left-hand-2").show();
-    //     $("#com-left-gray-2").hide();
-    //     $("#p-other-left").show();
-    //     $("#p-other-left-gray").hide();
-    //   }
-    // };
-
     // Print both player and computer active hands
     const printHands = () => {
       console.log(
@@ -678,6 +620,7 @@ $(() => {
       $("#computer-text").text("Computer's left attacked player's left");
       $("#computers-move").css("background-color", "crimson");
       $("#computer-text").css("color", "whitesmoke");
+      console.log("Computer left hand attacks player left hand");
     };
 
     // Computer left hand attacks player right hand
@@ -689,9 +632,10 @@ $(() => {
       $("#computer-text").text("Computer's left attacked player's right");
       $("#computers-move").css("background-color", "crimson");
       $("#computer-text").css("color", "whitesmoke");
+      console.log("Computer left hand attacks player right hand");
     };
 
-    // Computer left hand attacks player left hand
+    // Computer right hand attacks player left hand
     const comRightAttackPLeft = () => {
       playerLeftFingers = playerLeftFingers + computerRightFingers;
       $("#player-left").text(playerLeftFingers);
@@ -700,9 +644,10 @@ $(() => {
       $("#computer-text").text("Computer's right attacked player's left");
       $("#computers-move").css("background-color", "crimson");
       $("#computer-text").css("color", "whitesmoke");
+      console.log("Computer right hand attacks player left hand");
     };
 
-    // Computer left hand attacks player right hand
+    // Computer right hand attacks player right hand
     const comRightAttackPRight = () => {
       playerRightFingers = playerRightFingers + computerRightFingers;
       $("#player-right").text(playerRightFingers);
@@ -711,6 +656,7 @@ $(() => {
       $("#computer-text").text("Computer's right attacked player's right");
       $("#computers-move").css("background-color", "crimson");
       $("#computer-text").css("color", "whitesmoke");
+      console.log("Computer right hand attacks player right hand")
     };
 
     // Randomizes computer's moves if all hands are alive
@@ -725,7 +671,7 @@ $(() => {
         comRightAttackPLeft();
       } else {
         comRightAttackPRight();
-      }
+      };
     };
 
     // Randomizes computer's moves if player left is dead
@@ -736,7 +682,7 @@ $(() => {
         comLeftAttackPRight();
       } else {
         comRightAttackPRight();
-      }
+      };
     };
 
     // Randomizes computer's moves if player right is dead
@@ -747,7 +693,7 @@ $(() => {
         comLeftAttackPLeft();
       } else {
         comRightAttackPLeft();
-      }
+      };
     };
 
     // Randomizes computer's moves if computer left is dead
@@ -758,7 +704,7 @@ $(() => {
         comRightAttackPLeft();
       } else {
         comRightAttackPRight();
-      }
+      };
     };
 
     // Randomizes computer's moves if computer right is dead
@@ -769,7 +715,7 @@ $(() => {
         comLeftAttackPLeft();
       } else {
         comLeftAttackPRight();
-      }
+      };
     };
 
     // Computer's move
@@ -820,7 +766,7 @@ $(() => {
         comRightAttackPLeft();
       } else {
         randomMove();
-      }
+      };
     };
 
     // Check if the player wins/loses (when boths hands are dead)
@@ -866,6 +812,10 @@ $(() => {
 
     // Player's turn
     const playersTurn = () => {
+      let totalFingers = playerLeftFingers + playerRightFingers;
+      console.log("Player's total fingers: " + totalFingers);
+      console.log("Player's left fingers: " + playerLeftFingers);
+      console.log("Player's right fingers: " + playerRightFingers);
       printHands();
       // Return hand border-color state to original
       $("#computer-left").css("border-color", "black");
@@ -925,10 +875,12 @@ $(() => {
     $("#return-button").on("click", (event) => {
       resetParameters();
       showMain();
+      // location.reload();
     });
     $("#back").on("click", (event) => {
       resetParameters();
       showMain();
+      // location.reload();
     });
 
     // The player always starts first
