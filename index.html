@@ -25,16 +25,16 @@
         <div class="skintone">
           <h3>SELECT YOUR SKIN TONE:</h3>
           <div id="skin-options">
-            <div class="circle" id="default">
+            <div class="circle" id="gold">
               <div class="content">Default</div>
             </div>
-            <div class="circle" id="light">
+            <div class="circle" id="navajowhite">
               <div class="content">Light</div>
             </div>
-            <div class="circle" id="tan">
+            <div class="circle" id="peru">
               <div class="content">Tan</div>
             </div>
-            <div class="circle" id="dark">
+            <div class="circle" id="sienna">
               <div class="content">Dark</div>
             </div>
           </div>
@@ -47,6 +47,9 @@
             </div>
             <div class="rectangle" id="genius">
               <div class="content2">Genius</div>
+            </div>
+            <div class="rectangle-gray" id="genius-unavailable">
+              <div class="content4">Genius</div>
             </div>
           </div>
         </div>
@@ -80,15 +83,20 @@
     <div id="game-page">
       <div class="board">
         <div id="computer">
-          <div class="hand computer" id="computer-left">1</div>
           <div class="hand computer" id="computer-right">1</div>
+          <div class="hand computer" id="computer-left">1</div>
         </div>
         <div id="player">
           <div class="hand player" id="player-left">1</div>
           <div class="hand player" id="player-right">1</div>
         </div>
       </div>
-      <div class="result"></div>
+      <div class="result" id="win">
+        <h3 id="you-win">YOU WON!</h3>
+      </div>
+      <div class="result" id="lose">
+        <h3 id="you-lose">YOU LOST!</h3>
+      </div>
       <div class="container2">
         <div class="move">
           <h3>IT'S YOUR TURN. SELECT MOVE:</h3>
@@ -97,7 +105,25 @@
               <div class="content2">Attack</div>
             </div>
             <div class="rectangle" id="split">
-              <div class="content2">Split</div>
+              <div class="content2" id="split-text">Split</div>
+            </div>
+            <div class="rectangle-gray" id="cant-split">
+              <div class="content4">Can't Split</div>
+            </div>
+          </div>
+        </div>
+        <div class="move-split">
+          <h3>SPLIT FINGERS BETWEEN HANDS:</h3>
+          <div id="move-options">
+            <div class="oval" id="split-left-hand">
+              <div class="content2" id="split-left-value">1</div>
+            </div>
+            <h4>:</h4>
+            <div class="oval" id="split-right-hand">
+              <div class="content2" id="split-right-value">1</div>
+            </div>
+            <div class="rectangle" id="confirm-split">
+              <div class="content2" id="confirm">Confirm</div>
             </div>
           </div>
         </div>
@@ -107,44 +133,84 @@
             <div class="rectangle" id="p-left-hand">
               <div class="content2">Left Hand</div>
             </div>
+            <div class="rectangle-gray" id="gray-left-hand">
+              <div class="content4">Left Hand</div>
+            </div>
             <div class="rectangle" id="p-right-hand">
               <div class="content2">Right Hand</div>
+            </div>
+            <div class="rectangle-gray" id="gray-right-hand">
+              <div class="content4">Right Hand</div>
             </div>
           </div>
         </div>
         <div class="move-attack-2-left">
           <h3>SELECT HAND TO ATTACK:</h3>
           <div id="move-options">
-            <div class="rectangle" id="com-left-hand">
+            <div class="rectangle crimson" id="com-right-hand">
+              <div class="content2">Com-R</div>
+            </div>
+            <div class="rectangle-gray" id="com-right-gray">
+              <div class="content4">Com-R</div>
+            </div>
+            <div class="rectangle crimson" id="com-left-hand">
               <div class="content2">Com-L</div>
             </div>
-            <div class="rectangle" id="com-right-hand">
-              <div class="content2">Com-R</div>
+            <div class="rectangle-gray" id="com-left-gray">
+              <div class="content4">Com-L</div>
             </div>
             <div class="rectangle" id="p-other-right">
               <div class="content2">Right Hand</div>
+            </div>
+            <div class="rectangle-gray" id="p-other-right-gray">
+              <div class="content4">Right Hand</div>
             </div>
           </div>
         </div>
         <div class="move-attack-2-right">
           <h3>SELECT HAND TO ATTACK:</h3>
           <div id="move-options">
-            <div class="rectangle" id="com-left-hand-2">
-              <div class="content2">Com-L</div>
-            </div>
-            <div class="rectangle" id="com-right-hand-2">
-              <div class="content2">Com-R</div>
-            </div>
             <div class="rectangle" id="p-other-left">
               <div class="content2">Left Hand</div>
+            </div>
+            <div class="rectangle-gray" id="p-other-left-gray">
+              <div class="content4">Left Hand</div>
+            </div>
+            <div class="rectangle crimson" id="com-right-hand-2">
+              <div class="content2">Com-R</div>
+            </div>
+            <div class="rectangle-gray" id="com-right-gray-2">
+              <div class="content4">Com-R</div>
+            </div>
+            <div class="rectangle crimson" id="com-left-hand-2">
+              <div class="content2">Com-L</div>
+            </div>
+            <div class="rectangle-gray" id="com-left-gray-2">
+              <div class="content4">Com-L</div>
             </div>
           </div>
         </div>
         <div class="computers-turn">
           <h3>COMPUTER'S TURN:</h3>
           <div id="move-options">
-            <div class="rectangle" id="computers-move">
-              <div class="content2" id="computer-text">Computer making a move...</div>
+            <div class="rectangle2" id="computers-move">
+              <div class="content3" id="computer-text">Computer making a move...</div>
+            </div>
+          </div>
+        </div>
+        <div class="win-state">
+          <h3>YOU WON!</h3>
+          <div id="move-options">
+            <div class="rectangle" id="back">
+              <div class="content2">Back</div>
+            </div>
+          </div>
+        </div>
+        <div class="lose-state">
+          <h3>YOU LOST</h3>
+          <div id="move-options">
+            <div class="rectangle" id="back">
+              <div class="content2">Back</div>
             </div>
           </div>
         </div>
