@@ -829,12 +829,14 @@ $(() => {
         $(".board").hide();
         $("#win").show();
         $(".move-attack-2-right").hide();
+        $(".move-attack-2-left").hide();
         $(".win-state").show();
         console.log("Player has won the game");
       } else if (playerLeftFingers === 0 && playerRightFingers === 0) {
         $(".board").hide();
         $("#lose").show();
         $(".move-attack-2-right").hide();
+        $(".move-attack-2-left").hide();
         $(".lose-state").show();
         console.log("Player has lost to the computer");
       } else {
